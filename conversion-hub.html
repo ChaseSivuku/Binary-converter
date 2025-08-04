@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styes.css">
+</head>
+<body>
+    <div class="convert-card">
+        <h1>Converter Hub</h1>
+        <p>A collection of useful conversion tools</p>
+        <div class="tabs">
+            <ul>
+                <li>File Transfer</li>
+                <li>Temperature</li>
+                <li>Scientific</li>
+                <li>Metric</li>
+            </ul>
+        </div>
+        <div class="logic-area" id="file-transfer">
+            <h2>File Transfer Time Calculator</h2>
+            <div class="logic" id="logic-file-transfer">
+                <form action="">
+                    <label for="file-size">File Size</label>
+                    <input type="number" name="file-size">
+                    <select name="size-metric" id="size-metric1">
+                        <option value="GB">Gigabyte(GB)</option>
+                        <option value="GB">Megabyte(MB)</option>
+                        <option value="GB">Kilobyte(KB)</option>
+                    </select>
+                    <label for="internet-speed">Internet Speed</label>
+                    <input type="number" name="internet-speed">
+                    <input type="submit" value="Calculate">
+                </form>
+                <div class="result">
+                    <p>Estimated Time:</p>
+                    <p id="speed-result"></p>
+                </div>
+            </div>
+
+            
+        </div>
+        <div class="logic-area" id="temperature">
+            <h2>Temperature</h2>
+            <div id="temperatur-logic">
+                <form action="">
+                    <label for="temp-value">Value To Convert:</label>
+                    <input type="number" name="temp-value">
+                    <label for="temp-unit">From</label>
+                    <select name="temp-unit" id="temp-unit-id">
+                        <option value="c">Celsius(°C)</option>
+                        <option value="f">Fahrenheit(°F)</option>
+                    </select>
+                    <input type="submit" value="Convert" class="convert-button">
+                </form>
+                <div id="temp-result">
+                    <p>Converted Value</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="logic-area" id="scintific">
+            <h2>Scientific Notation Converter</h2>
+            <form action="">
+                <input type="number">
+                <input type="submit" value="Convert" class="convert-button">
+            </form>
+            <div id="temp-result">
+                    <p>Converted Value</p>
+                    <p></p>
+                </div>
+        </div>
+        <div class="logic-area" id="metric">
+            <h2>Metric Prefix Converter</h2>
+            <div id="metric-logic">
+                <form action="">
+                    <label for="metric-value">Value</label>
+                    <input type="number" name="metric-value">
+                    <label for="metric-from">From</label>
+                    <select name="metric-from" id="metric-from">
+                        <option value="G">Giga(G)</option>
+                        <option value="M">Mega(M)</option>
+                        <option value="K">Kilo(K)</option>
+                        <option value="U">Base Unit</option>
+                        <option value="m">Mili(m)</option>
+                        <option value="micro">Micro(µ)</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="convert.js"></script>
+</body>
+</html>
