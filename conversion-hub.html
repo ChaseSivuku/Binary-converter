@@ -21,11 +21,10 @@
         <div class="logic-area" id="file-transfer">
             <h2>File Transfer Time Calculator</h2>
             <div class="logic" id="logic-file-transfer">
-                <form>
                     <label for="file-size">File Size</label>
                     <br>
-                    <input type="number" name="file-size">
-                    <select name="size-metric" id="size-metric1">
+                    <input type="number" name="file-size" id="file-size">
+                    <select name="size-unit" id="size-unit">
                         <option value="GB">Gigabyte(GB)</option>
                         <option value="MB">Megabyte(MB)</option>
                         <option value="KB">Kilobyte(KB)</option>
@@ -33,18 +32,16 @@
                     <br>
                     <label for="internet-speed">Internet Speed</label>
                     <br>
-                    <input type="number" name="internet-speed">
-                    <select name="size-metric" id="size-metric1">
-                        <option value="GB">Gigabyte/Sec(Gbps)</option>
-                        <option value="MB">Megabyte/sec(Mbps)</option>
-                        <option value="KB">Kilobyte/sec(Kbps)</option>
+                    <input type="number" name="internet-speed" id="internet-speed">
+                    <select name="speed-unit" id="speed-unit">
+                        <option value="GBps">Gigabyte/Sec(Gbps)</option>
+                        <option value="MBps">Megabyte/sec(Mbps)</option>
+                        <option value="KBps">Kilobyte/sec(Kbps)</option>
                     </select>
                     <br>
-                    <button id="calc-Button">Calculate</button>
-                </form>
+                    <button id="calc-button">Calculate</button>
                 <div class="result">
-                    <p>Estimated Time:</p>
-                    <p id="speed-result"></p>
+                    <p id="time-result">Estimated Time: </p>
                 </div>
             </div>
 
@@ -53,33 +50,29 @@
         <div class="logic-area" id="temperature">
             <h2>Temperature Converter</h2>
             <div id="temperatur-logic">
-                <form action="">
                     <label for="temp-value">Value To Convert:</label>
                     <br>
-                    <input type="number" name="temp-value">
+                    <input type="number" name="temp-value" id="temp-value">
                     <br>
                     <label for="temp-unit">From</label>
                     <br>
-                    <select name="temp-unit" id="temp-unit-id">
+                    <select name="temp-unit" id="temp-unit">
                         <option value="c">Celsius(°C)</option>
                         <option value="f">Fahrenheit(°F)</option>
                     </select>
                     <br>
-                    <input type="submit" value="Convert" class="convert-button">
-                </form>
+                    <button id="convert-weather-button">Convert</button>
                 <div id="temp-result">
-                    <p>Converted Value</p>
+                    <p id="weather-converted">Converted Value: </p>
                     <p></p>
                 </div>
             </div>
         </div>
         <div class="logic-area" id="scientific">
             <h2>Scientific Notation Converter</h2>
-            <form action="">
                 <p>Standard Number</p>
                 <input type="number">
-                <button id="convert-button">Convert</button>
-            </form>
+                <button id="convert">Convert</button>
             <div id="sci-result">
                     <p>Converted Value</p>
                     <p></p>
@@ -88,13 +81,14 @@
         <div class="logic-area" id="metric">
             <h2>Metric Prefix Converter</h2>
             <div id="metric-logic">
-                <form action="">
                     <label for="metric-value">Value</label>
                     <br>
                     <input type="number" name="metric-value">
                     <br>
+                    <div class="labels">
                     <label for="metric-from">From</label>
-                    <br>
+                    <label for="metric-to">To</label>
+                    </div>
                     <select name="metric-from" id="metric-from">
                         <option value="G">Giga(G)</option>
                         <option value="M">Mega(M)</option>
@@ -103,9 +97,6 @@
                         <option value="m">Mili(m)</option>
                         <option value="micro">Micro(µ)</option>
                     </select>
-                    <br>
-                    <label for="metric-to">To</label>
-                    <br>
                     <select name="metric-to" id="metric-to">
                         <option value="G">Giga(G)</option>
                         <option value="M">Mega(M)</option>
@@ -114,8 +105,11 @@
                         <option value="m">Mili(m)</option>
                         <option value="micro">Micro(µ)</option>
                     </select>
+                    <br>
                     <button id="convert-button">Convert</button>
-                </form>
+                <div class="metric-result">
+                    <p>Answer:</p>
+                </div>
             </div>
         </div>
     </div>
