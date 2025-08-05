@@ -1,0 +1,33 @@
+#temperature{
+    display: flex;
+    flex-direction: column;
+}
+
+#scientific{
+    display: flex;
+    flex-direction: column;
+}
+
+#metric{
+    display: flex;
+    flex-direction: column;
+}
+
+#temperature, #scientific, #metric{
+    display: none;
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+}
+
+#file-transfer{
+    display: flex;
+    flex-direction: column;
+}
+
+#temperature{
+    display: flex;
+    flex-direction: column;
+}
