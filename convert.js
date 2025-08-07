@@ -65,11 +65,23 @@ console.log(fileTransferTime(100, "MB", 5, "MBps"));
 
 function weatherConvert(value, unit){
     if(unit === "f"){
-        return Math.floor(value - 32 * 5/9); 
+        return Math.floor((value -32) * 5/9) + "C"; 
     } else if(unit === "c"){
-        return Math.floor(value * 9/5 + 32);
+        return Math.floor((value * 9/5) + 32) + "F";
     }
 }
+
+// Metric prefixes with powers of 10
+const metricPrefixes = {
+  micro: -6,
+  m: -3,
+  U: 0,    // Base unit
+  K: 3,
+  M: 6,
+  G: 9
+};
+
+
 
 document.addEventListener("DOMContentLoaded", function() {
     hideAll();
@@ -83,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const sizeUnit = document.getElementById("size-unit").value;
 
         const answer = document.getElementById("time-result");
-        answer.textContent += fileTransferTime(size, sizeUnit, speed, speedUnit);
+        answer.textContent = "Time: " + fileTransferTime(size, sizeUnit, speed, speedUnit) + "seconds";
     });
     
     const weatherButton = document.getElementById("convert-weather-button");
@@ -92,9 +104,30 @@ document.addEventListener("DOMContentLoaded", function() {
         const unit = document.getElementById("temp-unit").value;
 
         const result = document.getElementById("weather-converted");
-        result.textContent += weatherConvert(value, unit);
+        result.textContent = "Converted Value: " + weatherConvert(value, unit);
+        //result.textContent += weatherConvert(value, unit);
+    });
+    
+    const sciButton = document.getElementById("convert-scientific").addEventListener("click", () =>{
+        const standardValue = parseInt(document.getElementById("standard-number").value);
+        const resultSci = standardValue.toExponential();
+        
+        const outPut = document.getElementById("sci-result");
+        outPut.textContent = "Converted Value: " + resultSci;
     });
 
-    
+    const metricConvertBtn = document.getElementById("convert-button");
+    metricConvertBtn.addEventListener("click", () => {
+    const value = parseFloat(document.querySelector("[name='metric-value']").value);
+    const from = document.getElementById("metric-from").value;
+    const to = document.getElementById("metric-to").value;
+
+    const powerDiff = metricPrefixes[from] - metricPrefixes[to];
+    const convertedValue = value * Math.pow(10, powerDiff);
+
+    const resultDiv = document.querySelector(".metric-result p");
+    resultDiv.textContent = "Answer: " + convertedValue;
+});
+
 });
 

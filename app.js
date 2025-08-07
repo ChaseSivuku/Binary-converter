@@ -2,6 +2,11 @@ var num1 = 0;
 var num2 = 0;
 var result = 0;
 
+
+moreContent = document.getElementById("to-hide");
+moreContent.style.display = "none";
+
+
 function add(value1, value2){
     return value1 + value2;
 }
@@ -61,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Convert input1 to out1 dynamically
-    function updateConversion() {
+    // Convert input1 to out1 
+    function updateConversion1() {
         const val = input1.value.trim();
         const from = select1.value;
         const to = select2.value;
@@ -81,42 +86,74 @@ document.addEventListener("DOMContentLoaded", () => {
         out1.value = (to === "bin") ? toBinary(parsed) : parsed;
     }
 
-    // Update out1 on input/type change
-    input1.addEventListener("input", updateConversion);
-    select1.addEventListener("change", updateConversion);
-    select2.addEventListener("change", updateConversion);
+    function updateConversion2() {
+    const val = input2.value.trim();
+    const from = select2.value;
+    const to = select1.value;
 
-    // Handle arithmetic operation
+    if (!val || !from || !to) {
+        out2.value = "";
+        return;
+    }
+
+    const parsed = parseValue(val, from);
+    if (isNaN(parsed)) {
+        out2.value = "Invalid";
+        return;
+    }
+
+    out2.value = (to === "bin") ? toBinary(parsed) : parsed;
+}
+
+    input1.addEventListener("input", () => {
+        updateConversion1();
+        updateConversion2();
+    });
+    input2.addEventListener("input", () => {
+    updateConversion2();
+    updateConversion1();
+    });
+    select1.addEventListener("change", () => {
+        updateConversion1();
+        updateConversion2();
+    });
+    select2.addEventListener("change", () => {
+        updateConversion1();
+        updateConversion2();
+    });
+
     function handleOperation(op) {
         const val1 = input1.value.trim();
         const val2 = input2.value.trim();
         const type1 = select1.value;
         const type2 = select2.value;
 
+        if (!val1 || !val2) {
+        resultOutput.value = "Please enter both inputs";
+        return;
+        }
+
         const num1 = parseValue(val1, type1);
         const num2 = parseValue(val2, type2);
 
-        // Validate
         if (isNaN(num1) || isNaN(num2)) {
             resultOutput.value = "Invalid";
             return;
         }
 
-        // Update out1 and out2
+        // update outputs
         out1.value = (type1 === "bin") ? toBinary(num1) : num1;
         out2.value = (type2 === "bin") ? toBinary(num2) : num2;
 
-        // Calculate result
+        // Calculations
         let result = 0;
         if (op === "add") result = add(num1, num2);
         else if (op === "sub") result = sub(num1, num2);
         else if (op === "multi") result = multi(num1, num2);
 
-        // Show result (same type as input1)
         resultOutput.value = (type1 === "bin") ? toBinary(result) : result;
     }
 
-    // Arithmetic button listeners
     document.getElementById("add").addEventListener("click", e => {
         e.preventDefault();
         handleOperation("add");
@@ -131,4 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         handleOperation("multi");
     });
+
+    
 });
